@@ -3,10 +3,9 @@ package rentcompany;
 public class K5 extends Car {
 
     private static final double fuelEfficiency = 13;
-    private static String name = "K5";
     private final double distance;
 
-    public K5(int distance) {
+    public K5(final double distance) {
         this.distance = distance;
 
     }
@@ -23,6 +22,6 @@ public class K5 extends Car {
 
     @Override
     String getName() {
-        return name;
+        return "K5";
     }
 }

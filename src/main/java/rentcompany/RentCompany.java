@@ -13,7 +13,7 @@ public class RentCompany {
         return new RentCompany();
     }
 
-    public void addCar(Car car) {
+    public void addCar(final Car car) {
         carList.add(car);
     }
 

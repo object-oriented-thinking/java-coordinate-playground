@@ -5,10 +5,9 @@ import java.util.Objects;
 public class Avante extends Car {
 
     private static final double fuelEfficiency = 15;
-    private static final String name = "Avante";
-
     private final double distance;
-    public Avante(double distance) {
+
+    public Avante(final double distance) {
         this.distance = distance;
     }
 
@@ -24,7 +23,7 @@ public class Avante extends Car {
 
     @Override
     String getName() {
-        return name;
+        return "Avante";
     }
 
     @Override

@@ -3,10 +3,9 @@ package rentcompany;
 public class Sonata extends Car {
 
     private static final double fuelEfficiency = 10;
-    private static String name = "Sonata";
     private final double distance;
 
-    public Sonata(int distance) {
+    public Sonata(final double distance) {
         this.distance = distance;
 
     }
@@ -23,6 +22,6 @@ public class Sonata extends Car {
 
     @Override
     String getName() {
-        return name;
+        return "Sonata";
     }
 }
