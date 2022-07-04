@@ -7,19 +7,19 @@ import java.util.stream.Collectors;
 public class RentCompany {
 
     private static final String NEWLINE = System.getProperty("line.separator");
-    private final List<Car> carList = new ArrayList<>();
+    private final List<Vehicle> vehicleList = new ArrayList<>();
 
     public static RentCompany create() {
         return new RentCompany();
     }
 
-    public void addCar(final Car car) {
-        carList.add(car);
+    public void addCar(final Vehicle vehicle) {
+        vehicleList.add(vehicle);
     }
 
     public String generateReport() {
-        return carList.stream()
-            .map(Car::report)
+        return vehicleList.stream()
+            .map(Vehicle::report)
             .collect(Collectors.joining(NEWLINE)) + NEWLINE;
     }
 }
