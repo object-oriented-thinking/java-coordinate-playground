@@ -1,5 +1,7 @@
 package coordinate;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,8 +20,8 @@ public class StringExpression {
         if (!matcher.matches()) {
             throw new IllegalArgumentException();
         }
-        firstCoordinate = new Coordinate(X_1, Y_1);
-        secondCoordinate = new Coordinate(X_2, Y_2);
+        firstCoordinate = getCoordinate(matcher, X_1, Y_1);
+        secondCoordinate = getCoordinate(matcher, X_2, Y_2);
     }
 
     public Coordinate getFirstCoordinate() {
@@ -28,5 +30,10 @@ public class StringExpression {
 
     public Coordinate getSecondCoordinate() {
         return secondCoordinate;
+    }
+
+    @NotNull
+    private Coordinate getCoordinate(Matcher matcher, String x1, String y1) {
+        return new Coordinate(matcher.group(x1), matcher.group(y1));
     }
 }
