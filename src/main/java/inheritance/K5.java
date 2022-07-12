@@ -1,3 +1,5 @@
+package inheritance;
+
 public class K5 extends Car{
     private double distance;
 

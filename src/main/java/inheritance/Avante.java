@@ -1,13 +1,15 @@
-public class Sonata extends Car{
-    private double distance;
+package inheritance;
 
-    public Sonata(double distance) {
+public class Avante extends Car{
+    private final double distance;
+
+    public Avante(double distance) {
         this.distance = distance;
     }
 
     @Override
     double getDistancePerLiter() {
-        return 10;
+        return 15;
     }
 
     @Override
