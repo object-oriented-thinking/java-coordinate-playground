@@ -1,5 +1,7 @@
 package coordinate;
 
+import static java.lang.Math.abs;
+
 public class Coordinate {
     private final double x;
     private final double y;
@@ -19,5 +21,13 @@ public class Coordinate {
 
         x = Double.parseDouble(stringX);
         y = Double.parseDouble(stringY);
+    }
+
+    public double getDistance(Coordinate secondCoordinate) {
+        return Math.sqrt(
+            abs(
+                (x - secondCoordinate.x) * (x - secondCoordinate.x)
+                    - (y - secondCoordinate.y) * (y - secondCoordinate.y))
+        );
     }
 }

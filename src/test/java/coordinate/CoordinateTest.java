@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CoordinateTest {
 
@@ -56,4 +57,16 @@ class CoordinateTest {
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
+    private static final String 입력값 = "(10,10)-(14,15)";
+
+    @Test
+    @DisplayName("자신의 위치와 입력받는 위치의 직선 상의 거리를 계산한다.")
+    void test5() {
+        //given
+        Coordinate 자신 = new Coordinate("10", "10");
+        Coordinate 입력값 = new Coordinate("14", "15");
+
+        //when & then
+        assertEquals(3.0, 자신.getDistance(입력값), 0.1);
+    }
 }

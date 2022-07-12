@@ -58,4 +58,15 @@ class StringExpressionTest {
         assertThat(expression.getFirstCoordinate()).isNotNull();
         assertThat(expression.getSecondCoordinate()).isNotNull();
     }
+
+    @Test
+    @DisplayName("식을 계산한다.")
+    void test5() {
+        // given
+        String stringExpression = 입력값;
+        // when
+        StringExpression expression = new StringExpression(stringExpression);
+        // then
+        assertEquals(3.0, expression.getDistance(), 0.1);
+    }
 }

@@ -36,4 +36,8 @@ public class StringExpression {
     private Coordinate getCoordinate(Matcher matcher, String x1, String y1) {
         return new Coordinate(matcher.group(x1), matcher.group(y1));
     }
+
+    public double getDistance() {
+        return firstCoordinate.getDistance(secondCoordinate);
+    }
 }
