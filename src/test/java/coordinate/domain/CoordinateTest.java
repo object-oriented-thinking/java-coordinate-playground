@@ -1,5 +1,6 @@
-package coordinate;
+package coordinate.domain;
 
+import coordinate.domain.Coordinate;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,6 @@
-package coordinate;
+package coordinate.domain;
 
+import coordinate.domain.StringExpression;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

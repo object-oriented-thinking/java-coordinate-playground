@@ -1,4 +1,4 @@
-package coordinate;
+package coordinate.domain;
 
 import static java.lang.Math.abs;
 

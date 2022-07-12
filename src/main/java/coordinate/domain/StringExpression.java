@@ -1,5 +1,6 @@
-package coordinate;
+package coordinate.domain;
 
+import coordinate.domain.Coordinate;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.regex.Matcher;
