@@ -14,9 +14,8 @@ public class InputConverter {
         validateCoordinateRange();
     }
 
-    public void something() {
-        CoordinateFactory factory = new CoordinateFactory();
-        factory.checkStraight(this.inputCoordinate);
+    public String deleteParentheses(String inputCoordinate) {
+        return inputCoordinate.replaceAll("[^0-9,-]*", "");
     }
 
     private boolean isNotMatchPattern(String inputCoordinate) {
@@ -48,9 +47,5 @@ public class InputConverter {
 
     private boolean isOverThanMaxRange(String tempLine) {
         return Integer.parseInt(tempLine) > 24;
-    }
-
-    private String deleteParentheses(String inputCoordinate) {
-        return inputCoordinate.replaceAll("[^0-9,-]*", "");
     }
 }

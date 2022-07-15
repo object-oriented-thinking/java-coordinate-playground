@@ -7,9 +7,10 @@
 
 Main: 예외발생시 계속입력받게한다(책임)  Input(협력)   
 
-Input:  좌표를 입력받는다(책임)  InputConverter(협력)   
+Input:  좌표를 입력받는다(책임)  InputConverter(협력), CoordinateFactory(협력)
 
-InputConverter:  좌표형식의 패턴,수의 범위를 검증한다(책임) CoordinateFactory(협력)   
+InputConverter:  좌표 입력받을때마다 생성자에서 좌표형식의 패턴,수의 범위를 검증한다.   
+패턴의 괄호를제거한다(책임)
 
 CoordinateFactory:  직선인지 아닌지 체크하고 좌표를 출력한다(책임) Coordinate(협력)
 

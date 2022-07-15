@@ -12,6 +12,7 @@ public class Input {
 
     private void validInput(String line) {
         InputConverter inputConverter = new InputConverter(line);
-        inputConverter.something();
+        CoordinateFactory factory = new CoordinateFactory();
+        factory.checkStraight(inputConverter.deleteParentheses(line));
     }
 }
