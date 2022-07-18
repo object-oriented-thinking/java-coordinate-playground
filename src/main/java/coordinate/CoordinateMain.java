@@ -1,6 +1,8 @@
 package coordinate;
 
-import coordinate.domain.*;
+import coordinate.domain.Coordinate;
+import coordinate.domain.CoordinateGraphClient;
+import coordinate.domain.CoordinateInputClient;
 
 import java.util.List;
 
