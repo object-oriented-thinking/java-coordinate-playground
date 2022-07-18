@@ -3,6 +3,7 @@ package coordinate;
 import coordinate.domain.Coordinate;
 import coordinate.domain.CoordinateGraphClient;
 import coordinate.domain.CoordinateInputClient;
+import coordinate.domain.CoordinatesCalculator;
 
 import java.util.List;
 
@@ -22,16 +23,12 @@ public class CoordinateMain {
             }
         };
 
-//        LineCalculator lineCalculator = new LineCalculator(coordinateGraphClient, coordinateInputClient);
+        CoordinatesCalculator calculator = new CoordinatesCalculator(coordinateInputClient.inputString());
 
-        //input
-//        Line expression = lineCalculator.input();
+        // display
+        coordinateGraphClient.displayGraph(calculator.findCoordinates());
 
-        //display
-//        lineCalculator.display(expression);
-
-        //calculate
-//        double value = lineCalculator.calculate(expression);
-//        System.out.println(value);
+        // print result
+        System.out.println("답은 " + calculator.getResult() + "입니다.");
     }
 }
