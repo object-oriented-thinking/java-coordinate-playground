@@ -44,6 +44,6 @@ public class Line implements Shapes {
 
         return Math.sqrt(
             abs((coordinate.getX() - otherCoordinate.getX()) * (coordinate.getX() - otherCoordinate.getX())
-                - (coordinate.getY() - otherCoordinate.getY()) * (coordinate.getY() - otherCoordinate.getY())));
+                + (coordinate.getY() - otherCoordinate.getY()) * (coordinate.getY() - otherCoordinate.getY())));
     }
 }
