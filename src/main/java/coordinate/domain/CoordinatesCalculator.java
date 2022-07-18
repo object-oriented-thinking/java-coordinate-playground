@@ -12,6 +12,11 @@ public class CoordinatesCalculator {
             return;
         }
 
+        if (expression.split(REGEX).length == 3) {
+            shapes = new Triangle(expression);
+            return;
+        }
+
         if (expression.split(REGEX).length == 4) {
             shapes = new Rectangle(expression);
             return;
