@@ -1,6 +1,6 @@
 package rentcompany;
 
-public abstract class Car implements Vehicle{
+public abstract class Car implements Vehicle {
 
     /**
      * 리터당 이동 거리. 즉, 연비
@@ -26,6 +26,6 @@ public abstract class Car implements Vehicle{
 
     @Override
     public String report() {
-        return getName() + " : " + (int)getChargeQuantity() + "리터";
+        return getName() + " : " + (int) getChargeQuantity() + "리터";
     }
 }
