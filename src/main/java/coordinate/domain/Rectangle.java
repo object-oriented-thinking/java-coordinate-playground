@@ -3,7 +3,9 @@ package coordinate.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
+
+import static java.lang.Math.abs;
 
 public class Rectangle implements Shapes {
     public static final String REGEX = "-";
@@ -44,19 +46,26 @@ public class Rectangle implements Shapes {
     }
 
     private double getArea(List<Coordinate> coordinates) {
-        Double rangeX = getRange(coordinates.stream().map(Coordinate::getX));
-        Double rangeY = getRange(coordinates.stream().map(Coordinate::getY));
-        return rangeX * rangeY;
-    }
-
-    private Double getRange(Stream<Double> stream) {
-        return stream.distinct().reduce((aDouble, aDouble2) -> Math.abs(aDouble - aDouble2))
+        List<Double> distanceList = Arrays.asList(
+            getDistance(coordinates.get(0), coordinates.get(1)),
+            getDistance(coordinates.get(1), coordinates.get(2)),
+            getDistance(coordinates.get(2), coordinates.get(3)),
+            getDistance(coordinates.get(3), coordinates.get(0))
+        );
+        return distanceList.stream().distinct()
+            .reduce((double1, double2) -> double1 * double2)
             .orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
     public List<Coordinate> findCoordinates() {
         return new ArrayList<>(coordinates);
+    }
+
+    public double getDistance(Coordinate coordinate, Coordinate otherCoordinate) {
+        return Math.sqrt(
+            abs((coordinate.getX() - otherCoordinate.getX()) * (coordinate.getX() - otherCoordinate.getX())
+                + (coordinate.getY() - otherCoordinate.getY()) * (coordinate.getY() - otherCoordinate.getY())));
     }
 
 }

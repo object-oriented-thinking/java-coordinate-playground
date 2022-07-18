@@ -30,7 +30,7 @@ public class Line implements Shapes {
 
     @Override
     public double getResult() {
-        return getDistance(coordinates);
+        return getDistance(coordinates.get(0), coordinates.get(1));
     }
 
     @Override
@@ -38,10 +38,7 @@ public class Line implements Shapes {
         return new ArrayList<>(coordinates);
     }
 
-    public double getDistance(List<Coordinate> coordinates) {
-        Coordinate coordinate = coordinates.get(0);
-        Coordinate otherCoordinate = coordinates.get(1);
-
+    private double getDistance(Coordinate coordinate, Coordinate otherCoordinate) {
         return Math.sqrt(
             abs((coordinate.getX() - otherCoordinate.getX()) * (coordinate.getX() - otherCoordinate.getX())
                 + (coordinate.getY() - otherCoordinate.getY()) * (coordinate.getY() - otherCoordinate.getY())));
