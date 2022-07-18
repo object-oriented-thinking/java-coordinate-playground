@@ -18,7 +18,7 @@ public class Rectangle implements Shapes {
         }
 
         if (expression.split(REGEX).length != 4) {
-            throw new IllegalArgumentException("좌표는 두개 만 들어가야 합니다.");
+            throw new IllegalArgumentException("좌표는 네 개 만 들어가야 합니다.");
         }
 
         List<Coordinate> coordinateList = Arrays.asList(
@@ -28,16 +28,18 @@ public class Rectangle implements Shapes {
             new Coordinate(expression.split(REGEX)[3])
         );
 
-        if (coordinateList.stream().map(Coordinate::getX).distinct().count() != 2) {
-            throw new IllegalArgumentException();
-        }
+        List<Double> distanceList = Arrays.asList(
+            getDistance(coordinateList.get(0), coordinateList.get(1)),
+            getDistance(coordinateList.get(1), coordinateList.get(2)),
+            getDistance(coordinateList.get(2), coordinateList.get(3)),
+            getDistance(coordinateList.get(3), coordinateList.get(0))
+        );
 
-        if (coordinateList.stream().map(Coordinate::getY).distinct().count() != 2) {
+        if (distanceList.stream().distinct().count() != 2) {
             throw new IllegalArgumentException();
         }
 
         this.coordinates = coordinateList;
-
     }
 
     @Override
@@ -62,7 +64,7 @@ public class Rectangle implements Shapes {
         return new ArrayList<>(coordinates);
     }
 
-    public double getDistance(Coordinate coordinate, Coordinate otherCoordinate) {
+    private double getDistance(Coordinate coordinate, Coordinate otherCoordinate) {
         return Math.sqrt(
             abs((coordinate.getX() - otherCoordinate.getX()) * (coordinate.getX() - otherCoordinate.getX())
                 + (coordinate.getY() - otherCoordinate.getY()) * (coordinate.getY() - otherCoordinate.getY())));
