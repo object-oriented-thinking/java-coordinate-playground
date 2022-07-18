@@ -1,26 +1,35 @@
 package coordinate;
 
-import coordinate.domain.LineCalculator;
-import coordinate.domain.StringExpression;
-import coordinate.infra.CoordinateGraphClient;
-import coordinate.infra.CoordinateInputClient;
+import coordinate.domain.*;
+
+import java.util.List;
 
 public class CoordinateMain {
 
     public static void main(String[] args) {
-        coordinate.domain.CoordinateInputClient coordinateInputClient = new CoordinateInputClient();
-        coordinate.domain.CoordinateGraphClient coordinateGraphClient = new CoordinateGraphClient();
+        coordinate.domain.CoordinateInputClient coordinateInputClient = new CoordinateInputClient() {
+            @Override
+            public String inputString() {
+                return "(10,10)-(14,15)";
+            }
+        };
+        coordinate.domain.CoordinateGraphClient coordinateGraphClient = new CoordinateGraphClient() {
+            @Override
+            public boolean displayGraph(List<Coordinate> coordinates) {
+                return true;
+            }
+        };
 
-        LineCalculator lineCalculator = new LineCalculator(coordinateGraphClient, coordinateInputClient);
+//        LineCalculator lineCalculator = new LineCalculator(coordinateGraphClient, coordinateInputClient);
 
         //input
-        StringExpression expression = lineCalculator.input();
+//        Line expression = lineCalculator.input();
 
         //display
-        lineCalculator.display(expression);
+//        lineCalculator.display(expression);
 
         //calculate
-        double value = lineCalculator.calculate(expression);
-        System.out.println(value);
+//        double value = lineCalculator.calculate(expression);
+//        System.out.println(value);
     }
 }

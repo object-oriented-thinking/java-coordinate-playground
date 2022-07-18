@@ -1,73 +1,57 @@
 package coordinate.domain;
 
-import coordinate.domain.Coordinate;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CoordinateTest {
 
     @Test
-    @DisplayName("x, y 값을 입력해 좌표를 생성한다.")
-    void test1() {
-        //when & then
+    @DisplayName("좌표를 입력받아 좌표를 생성합니다.")
+    void test() {
+        String 좌표 = "(10,10)";
         assertDoesNotThrow(
-            () -> new Coordinate("1", "4")
+            () -> new Coordinate(좌표)
         );
     }
 
     @Test
-    @DisplayName("좌표는 음수이면 IllegalArgumentException 예외가 발생한다.")
+    @DisplayName("입력되는 식은 정규 표현식에 맞지 않으면 IllegalArgumentException 예외가 발생합니다.")
+    void test1() {
+        String 좌표 = "(1010)";
+        assertThatThrownBy(
+            () -> new Coordinate(좌표)
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("식 내의 좌표에 숫자가 들어가지 않으면 IllegalArgumentException  예외가 발생합니다.")
     void test2() {
-        // given
-        String x = "-1";
-        String y = "1";
-
-        //when & then
-        Assertions.assertThatThrownBy(
-            () -> new Coordinate(x, y)
+        String 좌표 = "(10,string)";
+        assertThatThrownBy(
+            () -> new Coordinate(좌표)
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("좌표는 25이상이면 IllegalArgumentException 예외가 발생한다.")
-    void test3() {
-        // given
-        String x = "25";
-        String y = "1";
-
-        //when & then
-        Assertions.assertThatThrownBy(
-            () -> new Coordinate(x, y)
+    @ParameterizedTest
+    @DisplayName("0 미만의 숫자가 들어가면 예외가 발생합니다.")
+    @ValueSource(strings = {"(-1,-5)", "(5,-1)"})
+    void test3(String 좌표) {
+        assertThatThrownBy(
+            () -> new Coordinate(좌표)
         ).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("좌표에 입력 값에 숫자가 아닌 문자가 들어가면 IllegalArgumentException 예외가 발생한다.")
-    void test4() {
-        // given
-        String x = "test";
-        String y = "1";
-
-        //when & then
-        Assertions.assertThatThrownBy(
-            () -> new Coordinate(x, y)
+    @ParameterizedTest
+    @DisplayName("24 이상의 숫자가 들어가면 예외가 발생합니다.")
+    @ValueSource(strings = {"(5,25)", "(25,3)"})
+    void test4(String 좌표) {
+        assertThatThrownBy(
+            () -> new Coordinate(좌표)
         ).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    private static final String 입력값 = "(10,10)-(14,15)";
-
-    @Test
-    @DisplayName("자신의 위치와 입력받는 위치의 직선 상의 거리를 계산한다.")
-    void test5() {
-        //given
-        Coordinate 자신 = new Coordinate("10", "10");
-        Coordinate 입력값 = new Coordinate("14", "15");
-
-        //when & then
-        assertEquals(3.0, 자신.getDistance(입력값), 0.1);
     }
 }

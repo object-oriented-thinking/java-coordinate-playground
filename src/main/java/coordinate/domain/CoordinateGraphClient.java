@@ -1,5 +1,7 @@
 package coordinate.domain;
 
+import java.util.List;
+
 public interface CoordinateGraphClient {
-    boolean displayGraph(Coordinate firstCoordinate, Coordinate secondCoordinate);
+    boolean displayGraph(List<Coordinate> coordinates);
 }
